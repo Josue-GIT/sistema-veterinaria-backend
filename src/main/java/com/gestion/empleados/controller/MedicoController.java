@@ -29,7 +29,7 @@ public class MedicoController {
     public MedicoController(MedicoService medicoService) {
         this.medicoService = medicoService;
     }
-
+    
     @GetMapping
     public List<Medico> getAllMedicos() {
         return medicoService.getAllMedicos();

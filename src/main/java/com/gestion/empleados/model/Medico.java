@@ -26,7 +26,9 @@ public class Medico implements Serializable{
 	private String fechaNacimiento;
 	@Column
 	private String horario;
-
+	@Column
+	private String url;
+	
 	@OneToMany(mappedBy = "medico")
 	private Collection<Cita> itemsCita=new ArrayList<>();
 	
@@ -36,15 +38,24 @@ public class Medico implements Serializable{
 	public Medico() {
 	}
 
-	public Medico(int medicoid, String nombre, String fechaNacimiento, String horario) {
+	public Medico(int medicoid, String nombre, String fechaNacimiento, String horario, String url) {
 		super();
 		this.medicoid = medicoid;
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
 		this.horario = horario;
+		this.url = url;
 	}
 
 	
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
 	public int getMedicoid() {
 		return medicoid;

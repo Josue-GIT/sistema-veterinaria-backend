@@ -49,11 +49,17 @@ public class UserEntity implements Serializable
 	@Column
 	private String sexo;
 	@Column
+	private String url;
+	@Column
 	@OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("userEntity")
 	private Collection<Mascota> itemsMascota = new ArrayList<>();
 	
 	private String state=StateType.ACTIVE.name();
+	
+	public boolean checkCredentials(String username, String password) {
+        return this.username.equals(username) && this.password.equals(password);
+    }
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="users_roles",
@@ -66,7 +72,7 @@ public class UserEntity implements Serializable
 	}
 
 	public UserEntity(Integer userId, String username, String password, String nombre, String apellidos,
-			String direccion, String celular, String email, String sexo, String state) {
+			String direccion, String celular, String email, String sexo, String state, String url) {
 		super();
 		this.userId = userId;
 		this.username = username;
@@ -78,6 +84,7 @@ public class UserEntity implements Serializable
 		this.email = email;
 		this.sexo = sexo;
 		this.state = state;
+		this.url = url;
 	}
 	
 	
